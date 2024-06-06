@@ -10,12 +10,14 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 
 public class ActivityVentaPasaje extends AppCompatActivity {
 
     private Button search_button;
     private CheckBox check_no, check_si;
     private ConstraintLayout time_picker_container;
+    private ImageView check_cancel_hora;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +31,16 @@ public class ActivityVentaPasaje extends AppCompatActivity {
         check_si = findViewById(R.id.check_si);
         check_no = findViewById(R.id.check_no);
         time_picker_container = findViewById(R.id.time_picker_container);
+        check_cancel_hora = findViewById(R.id.check_cancel_hora);
 
         check_si.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                check_no.setChecked(false);
-                time_picker_container.setVisibility(View.GONE); // Oculta el time_picker_container si se selecciona "SI"
+                cancelHourSelect();
             }
+        });
+
+        check_cancel_hora.setOnClickListener(view -> {
+            cancelHourSelect();
         });
 
         check_no.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -48,5 +54,10 @@ public class ActivityVentaPasaje extends AppCompatActivity {
             Intent intent = new Intent(ActivityVentaPasaje.this, chofer_buseta.class);
             startActivity(intent);
         });
+    }
+
+    private void cancelHourSelect(){
+        check_no.setChecked(false);
+        time_picker_container.setVisibility(View.GONE); // Oculta el time_picker_container si se selecciona "SI"
     }
 }

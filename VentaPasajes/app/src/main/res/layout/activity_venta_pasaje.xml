@@ -122,15 +122,15 @@
                 <EditText
                     android:id="@+id/to_location"
                     style="@style/CustomEditTextLine"
-                    android:layout_width="250dp"
-                    android:layout_height="48dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
                     android:layout_marginEnd="8dp"
                     android:hint="Tu destino"
                     app:layout_constraintEnd_toStartOf="@+id/swap_button"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/label_to" />
+                    app:layout_constraintTop_toBottomOf="@+id/label_to"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
@@ -146,8 +146,7 @@
             app:cardElevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card_view"
-            app:layout_constraintBottom_toTopOf="@+id/checks">
+            app:layout_constraintTop_toBottomOf="@+id/card_view">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -204,16 +203,16 @@
 
                 <EditText
                     android:id="@+id/edtDocumentUser"
-                    style="@style/CustomEditTextLine"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginEnd="58dp"
                     android:hint="Número de documento"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/nombre_user"/>
+                    app:layout_constraintTop_toBottomOf="@id/nombre_user"
+                    app:layout_constraintBottom_toTopOf="@id/phone_user"/>
 
                 <EditText
                     android:id="@+id/phone_user"
@@ -221,7 +220,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginEnd="58dp"
                     android:hint="Número de teléfono"
                     app:layout_constraintEnd_toEndOf="parent"
