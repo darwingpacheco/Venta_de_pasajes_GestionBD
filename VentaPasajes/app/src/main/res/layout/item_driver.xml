@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:elevation="8dp"
+    app:cardCornerRadius="12dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/icon_driver"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/nameuser"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/linerInfoChofer"
+            android:layout_marginEnd="16dp"/>
+
+        <LinearLayout
+            android:id="@+id/linerInfoChofer"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginStart="90dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/driver_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre del Chofer"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/icon_driver"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/driver_plate_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Número de Placa"
+                android:textColor="#757575"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/driver_name"
+                app:layout_constraintStart_toEndOf="@id/icon_driver"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/bus_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Número de Buseta"
+                android:textColor="#757575"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/driver_plate_number"
+                app:layout_constraintStart_toEndOf="@id/icon_driver"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
