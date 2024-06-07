@@ -6,9 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.example.ventapasajes.adapter.Chofer;
 import com.example.ventapasajes.adapter.ChoferAdapter;
@@ -21,7 +25,9 @@ public class chofer_buseta extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ChoferAdapter driverAdapter;
     private List<Chofer> listaChoferes;
+    private FrameLayout firstPassengerContainer;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +37,7 @@ public class chofer_buseta extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN | SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
         recyclerView = findViewById(R.id.recycler_view);
+        firstPassengerContainer = findViewById(R.id.first_passenger_container);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Datos de ejemplo
@@ -39,9 +46,29 @@ public class chofer_buseta extends AppCompatActivity {
         listaChoferes.add(new Chofer("Ana García", "XYZ-456", "Bus 202"));
         listaChoferes.add(new Chofer("Carlos López", "LMN-789", "Bus 303"));
 
-        driverAdapter = new ChoferAdapter(listaChoferes);
-        recyclerView.setAdapter(driverAdapter);
+        if (!listaChoferes.isEmpty()) {
+            // Mostrar el primer chofer en el FrameLayout
+            showFirstPassenger(listaChoferes.get(0));
 
+            // Configurar el RecyclerView con los choferes restantes
+            List<Chofer> remainingChoferes = listaChoferes.subList(1, listaChoferes.size());
+            driverAdapter = new ChoferAdapter(remainingChoferes);
+            recyclerView.setAdapter(driverAdapter);
+        }
+    }
 
+    private void showFirstPassenger(Chofer chofer) {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View firstPassengerView = inflater.inflate(R.layout.item_driver, firstPassengerContainer, false);
+
+        TextView driverName = firstPassengerView.findViewById(R.id.driver_name);
+        TextView driverPlateNumber = firstPassengerView.findViewById(R.id.driver_plate_number);
+        TextView busNumber = firstPassengerView.findViewById(R.id.bus_number);
+
+        driverName.setText(chofer.getNombre());
+        driverPlateNumber.setText(chofer.getNumeroBuseta());
+        busNumber.setText(chofer.getNumeroBuseta());
+
+        firstPassengerContainer.addView(firstPassengerView);
     }
 }
