@@ -75,11 +75,4 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-    <include
-        android:id="@+id/layout_asientos"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        layout="@layout/asientos"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
