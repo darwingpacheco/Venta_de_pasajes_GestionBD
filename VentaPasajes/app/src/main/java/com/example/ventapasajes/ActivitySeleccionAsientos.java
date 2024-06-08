@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.ventapasajes.dataPasaje.DataAllVentaPasaje;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +18,7 @@ public class ActivitySeleccionAsientos extends AppCompatActivity {
     private TextView countSelectAsientos;
     private boolean[] selectedSeats = new boolean[9];
     private List<Integer> selectedSeatNumbers = new ArrayList<>();
+    private DataAllVentaPasaje dataAllVentaPasaje = new DataAllVentaPasaje();
 
     private int[] buttonIds = {
             R.id.asientoOne, R.id.asientoDos, R.id.asientoTres,
@@ -56,6 +59,9 @@ public class ActivitySeleccionAsientos extends AppCompatActivity {
                     selectedSeats[finalI] = !selectedSeats[finalI];
                     int countAsientos = selectedSeatNumbers.size();
                     countSelectAsientos.setText(String.valueOf(countAsientos));
+
+                    // Update the DataAllVentaPasaje instance
+                    dataAllVentaPasaje.setAsientosSeleccionados(new ArrayList<>(selectedSeatNumbers));
                 }
             });
         }
