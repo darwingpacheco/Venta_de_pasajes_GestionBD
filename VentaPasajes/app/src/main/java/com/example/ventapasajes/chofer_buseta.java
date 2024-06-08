@@ -3,6 +3,8 @@ package com.example.ventapasajes;
 import static android.view.View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,6 +15,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ventapasajes.adapter.Chofer;
 import com.example.ventapasajes.adapter.ChoferAdapter;
@@ -26,6 +29,8 @@ public class chofer_buseta extends AppCompatActivity {
     private ChoferAdapter driverAdapter;
     private List<Chofer> listaChoferes;
     private FrameLayout firstPassengerContainer;
+    private CardView cardViewChoferes;
+    private ConstraintLayout layout_asientos;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -38,6 +43,8 @@ public class chofer_buseta extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recycler_view);
         firstPassengerContainer = findViewById(R.id.first_passenger_container);
+        cardViewChoferes = findViewById(R.id.cardViewChoferes);
+        layout_asientos = findViewById(R.id.layout_asientos);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Datos de ejemplo
@@ -57,7 +64,7 @@ public class chofer_buseta extends AppCompatActivity {
         }
     }
 
-    private void showFirstPassenger(Chofer chofer) {
+    private void showFirstPassenger(final Chofer chofer) {
         LayoutInflater inflater = LayoutInflater.from(this);
         View firstPassengerView = inflater.inflate(R.layout.item_driver, firstPassengerContainer, false);
 
@@ -66,8 +73,16 @@ public class chofer_buseta extends AppCompatActivity {
         TextView busNumber = firstPassengerView.findViewById(R.id.bus_number);
 
         driverName.setText(chofer.getNombre());
-        driverPlateNumber.setText(chofer.getNumeroBuseta());
+        driverPlateNumber.setText(chofer.getNumeroPlaca());
         busNumber.setText(chofer.getNumeroBuseta());
+
+        firstPassengerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                layout_asientos.setVisibility(View.VISIBLE);
+                cardViewChoferes.setVisibility(View.GONE);
+            }
+        });
 
         firstPassengerContainer.addView(firstPassengerView);
     }
