@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +31,6 @@ public class chofer_buseta extends AppCompatActivity {
     private List<Chofer> listaChoferes;
     private FrameLayout firstPassengerContainer;
     private CardView cardViewChoferes;
-    private ConstraintLayout layout_asientos;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -38,26 +38,20 @@ public class chofer_buseta extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chofer_buseta);
 
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN | SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-
         recyclerView = findViewById(R.id.recycler_view);
         firstPassengerContainer = findViewById(R.id.first_passenger_container);
         cardViewChoferes = findViewById(R.id.cardViewChoferes);
-        layout_asientos = findViewById(R.id.layout_asientos);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Datos de ejemplo
         listaChoferes = new ArrayList<>();
-        listaChoferes.add(new Chofer("Juan Pérez", "ABC-123", "Bus 101"));
         listaChoferes.add(new Chofer("Ana García", "XYZ-456", "Bus 202"));
+        listaChoferes.add(new Chofer("Juan Pérez", "ABC-123", "Bus 101"));
         listaChoferes.add(new Chofer("Carlos López", "LMN-789", "Bus 303"));
 
         if (!listaChoferes.isEmpty()) {
-            // Mostrar el primer chofer en el FrameLayout
             showFirstPassenger(listaChoferes.get(0));
 
-            // Configurar el RecyclerView con los choferes restantes
             List<Chofer> remainingChoferes = listaChoferes.subList(1, listaChoferes.size());
             driverAdapter = new ChoferAdapter(remainingChoferes);
             recyclerView.setAdapter(driverAdapter);
@@ -79,11 +73,18 @@ public class chofer_buseta extends AppCompatActivity {
         firstPassengerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                layout_asientos.setVisibility(View.VISIBLE);
-                cardViewChoferes.setVisibility(View.GONE);
+                Intent intent = new Intent(chofer_buseta.this, ActivitySeleccionAsientos.class);
+                startActivity(intent);
             }
         });
 
         firstPassengerContainer.addView(firstPassengerView);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN | SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
     }
 }

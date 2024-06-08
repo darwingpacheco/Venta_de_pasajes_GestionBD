@@ -24,9 +24,6 @@ public class ActivityVentaPasaje extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_venta_pasaje);
 
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN | SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-
         search_button = findViewById(R.id.search_button);
         check_si = findViewById(R.id.check_si);
         check_no = findViewById(R.id.check_no);
@@ -54,6 +51,13 @@ public class ActivityVentaPasaje extends AppCompatActivity {
             Intent intent = new Intent(ActivityVentaPasaje.this, chofer_buseta.class);
             startActivity(intent);
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN | SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
     }
 
     private void cancelHourSelect(){
