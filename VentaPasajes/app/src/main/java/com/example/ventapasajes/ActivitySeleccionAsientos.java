@@ -1,14 +1,17 @@
 package com.example.ventapasajes;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ventapasajes.dataPasaje.DataAllVentaPasaje;
+import com.example.ventapasajes.dataPasaje.SingletonData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +19,11 @@ import java.util.List;
 public class ActivitySeleccionAsientos extends AppCompatActivity {
 
     private TextView countSelectAsientos;
+    private Button addPuesto;
     private boolean[] selectedSeats = new boolean[9];
     private List<Integer> selectedSeatNumbers = new ArrayList<>();
-    private DataAllVentaPasaje dataAllVentaPasaje = new DataAllVentaPasaje();
+    private int countAsientos;
+    private DataAllVentaPasaje dataAllVentaPasaje = SingletonData.getInstance().getDataAllVentaPasaje();
 
     private int[] buttonIds = {
             R.id.asientoOne, R.id.asientoDos, R.id.asientoTres,
@@ -42,6 +47,7 @@ public class ActivitySeleccionAsientos extends AppCompatActivity {
         setContentView(R.layout.activity_seleccion_asientos);
 
         countSelectAsientos = findViewById(R.id.countSelectAsientos);
+        addPuesto = findViewById(R.id.addPuesto);
 
         for (int i = 0; i < buttonIds.length; i++) {
             ImageButton seatButton = findViewById(buttonIds[i]);
@@ -57,14 +63,20 @@ public class ActivitySeleccionAsientos extends AppCompatActivity {
                         selectedSeatNumbers.add(finalI + 1);
                     }
                     selectedSeats[finalI] = !selectedSeats[finalI];
-                    int countAsientos = selectedSeatNumbers.size();
+                    countAsientos = selectedSeatNumbers.size();
                     countSelectAsientos.setText(String.valueOf(countAsientos));
 
-                    // Update the DataAllVentaPasaje instance
-                    dataAllVentaPasaje.setAsientosSeleccionados(new ArrayList<>(selectedSeatNumbers));
+
                 }
             });
         }
+
+        addPuesto.setOnClickListener(view -> {
+            dataAllVentaPasaje.setAsientosSeleccionados(new ArrayList<>(selectedSeatNumbers));
+            dataAllVentaPasaje.setCantidadPuestos(countAsientos);
+            Intent intent = new Intent(ActivitySeleccionAsientos.this, ActivityDetalleVenta.class);
+            startActivity(intent);
+        });
     }
 
     @Override

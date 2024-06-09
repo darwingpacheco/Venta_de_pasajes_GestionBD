@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import com.example.ventapasajes.adapter.Chofer;
 import com.example.ventapasajes.adapter.ChoferAdapter;
+import com.example.ventapasajes.dataPasaje.DataAllVentaPasaje;
+import com.example.ventapasajes.dataPasaje.SingletonData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +33,7 @@ public class chofer_buseta extends AppCompatActivity {
     private List<Chofer> listaChoferes;
     private FrameLayout firstPassengerContainer;
     private CardView cardViewChoferes;
+    private DataAllVentaPasaje dataAllVentaPasaje = SingletonData.getInstance().getDataAllVentaPasaje();
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -73,6 +76,9 @@ public class chofer_buseta extends AppCompatActivity {
         firstPassengerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dataAllVentaPasaje.setNombreChoferRecogida(chofer.getNombre());
+                dataAllVentaPasaje.setPlacaBusRecogida(chofer.getNumeroPlaca());
+                dataAllVentaPasaje.setNumeroBusRecogida(chofer.getNumeroBuseta());
                 Intent intent = new Intent(chofer_buseta.this, ActivitySeleccionAsientos.class);
                 startActivity(intent);
             }

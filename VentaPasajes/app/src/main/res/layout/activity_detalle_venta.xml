@@ -6,4 +6,222 @@
     android:layout_height="match_parent"
     tools:context=".ActivityDetalleVenta">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre y apellido: "
+                android:textColor="@color/black"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/detail_nameUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Darwin Andrey Gómez"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nro. Documento: "
+                android:textColor="@color/black"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/detail_nunDocument"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1005076148"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nro. Telefono: "
+                android:textColor="@color/black"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/detail_nunPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3224291874"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Origen: "
+                android:textColor="@color/black"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/detail_origen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Abrego"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Destino: "
+                android:textColor="@color/black"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/detail_destino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ocaña"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre y apellido: "
+                android:textColor="@color/black"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/detail_nameChofer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Juilio Perez"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nro. de placa: "
+                android:textColor="@color/black"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/detail_placaBus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="XYZ-239D"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nro. del bus: "
+                android:textColor="@color/black"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/detail_numBus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="605"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cantidad de asientos: "
+                android:textColor="@color/black"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/detail_numAsientos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Posición asientos: "
+                android:textColor="@color/black"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/detail_positionAsientos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 - 6"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

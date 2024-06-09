@@ -19,10 +19,10 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.ventapasajes.dataPasaje.DataAllVentaPasaje;
+import com.example.ventapasajes.dataPasaje.SingletonData;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
 import org.threeten.bp.LocalTime;
-import org.threeten.bp.format.DateTimeFormatter;
 
 public class ActivityVentaPasaje extends AppCompatActivity {
 
@@ -33,7 +33,7 @@ public class ActivityVentaPasaje extends AppCompatActivity {
     private EditText to_location, from_location, phone_user, edtDocumentUser, nombre_user;
     private LocalTime hourPasajero;
     private TimePicker time_picker;
-    private DataAllVentaPasaje dataAllVentaPasaje = new DataAllVentaPasaje();
+    private DataAllVentaPasaje dataAllVentaPasaje = SingletonData.getInstance().getDataAllVentaPasaje();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
